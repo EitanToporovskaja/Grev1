@@ -1,5 +1,24 @@
-﻿@{
-    ViewData["Title"] = "Index";
+﻿@model Grev.Models.Usuario
+
+@{
+    ViewBag.Title = "Login";
 }
 
-<h1>TP XX - Index</h1>
+<h2>Login</h2>
+
+@using (Html.BeginForm("Login", "Auth", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.NombreUsuario)
+        @Html.TextBoxFor(m => m.NombreUsuario, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Contraseña)
+        @Html.PasswordFor(m => m.Contraseña, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+}
